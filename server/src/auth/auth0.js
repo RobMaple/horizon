@@ -23,7 +23,7 @@ function auth0(horizon, raw_options) {
   const host = options.host;
 
   const self_url = (self_host, path) =>
-    url.format({ protocol: 'https', host: self_host, pathname: path });
+    url.format({ protocol: 'https', scope: 'openid profile', host: self_host, pathname: path });
 
   const make_acquire_url = (state, redirect_uri) =>
     url.format({ protocol: 'https',
@@ -45,7 +45,7 @@ function auth0(horizon, raw_options) {
     https.request({ host, path: '/userinfo',
                     headers: { Authorization: `Bearer ${access_token}` } });
 
-  const extract_id = (user_info) => user_info && user_info.user_id;
+  const extract_id = (user_info) => user_info && user_info.sub;
 
 
   auth_utils.oauth2({
