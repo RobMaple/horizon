@@ -23,13 +23,13 @@ function auth0(horizon, raw_options) {
   const host = options.host;
 
   const self_url = (self_host, path) =>
-    url.format({ protocol: 'https', scope: 'openid profile', host: self_host, pathname: path });
+    url.format({ protocol: 'https', host: self_host, pathname: path });
 
   const make_acquire_url = (state, redirect_uri) =>
     url.format({ protocol: 'https',
                  host: host,
                  pathname: '/authorize',
-                 query: { response_type: 'code', client_id, redirect_uri, state } });
+                 query: { response_type: 'code', scope: 'openid profile', client_id, redirect_uri, state } });
 
   const make_token_request = (code, redirect_uri) => {
     const req = https.request({ method: 'POST', host, path: '/oauth/token',
