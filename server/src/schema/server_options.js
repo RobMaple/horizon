@@ -27,7 +27,7 @@ const auth = Joi.object({
   success_redirect: Joi.string().default('/'),
   failure_redirect: Joi.string().default('/'),
 
-  duration: Joi.alternatives(Joi.string(), Joi.number().positive()).default('1d'),
+  duration: Joi.alternatives(Joi.string(), Joi.number().positive()).default('30d'),
 
   create_new_users: Joi.boolean().default(true),
   new_user_group: Joi.string().default('authenticated'),
