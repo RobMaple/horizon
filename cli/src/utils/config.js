@@ -49,7 +49,7 @@ const make_default_options = () => ({
   auth_redirect: '/',
   access_control_allow_origin: '',
   max_connections: null,
-
+  duration: '1d',
   auth: { },
 });
 
